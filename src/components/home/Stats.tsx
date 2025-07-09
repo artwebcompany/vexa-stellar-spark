@@ -13,8 +13,6 @@ const Stats = () => {
 
   return (
     <section className="py-20 bg-gray-50 relative overflow-hidden">
-      <div className="absolute inset-0 bg-galaxy opacity-10"></div>
-      
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimationWrapper>
           <div className="text-center mb-16">
@@ -36,15 +34,20 @@ const Stats = () => {
                 animation="fade-in"
                 className="text-center"
               >
-                <div className="gradient-border bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <div className="mb-4">
-                    <Icon className="w-8 h-8 text-vexa-purple mx-auto" />
-                  </div>
-                  <div className="text-4xl font-playfair font-bold vexa-gradient-text mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-medium">
-                    {stat.label}
+                <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden">
+                  {/* Individual gradient background for each card */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-vexa-purple/10 via-vexa-blue/5 to-vexa-cyan/10 opacity-60"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="mb-4">
+                      <Icon className="w-8 h-8 text-vexa-purple mx-auto" />
+                    </div>
+                    <div className="text-4xl font-playfair font-bold vexa-gradient-text mb-2">
+                      {stat.number}
+                    </div>
+                    <div className="text-gray-600 font-medium">
+                      {stat.label}
+                    </div>
                   </div>
                 </div>
               </AnimationWrapper>
