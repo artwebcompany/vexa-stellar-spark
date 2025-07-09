@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -31,7 +32,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img src="/public/assets/logo.png" alt="VEXA Creative" className="w-10 h-10" />
-            <img src="/lovable-uploads/2a041c16-2d12-4ab4-ae51-4e62283a2cdd.png" alt="VEXA Creative - Your Digital Growth Partner" className="h-8 w-auto object-fill" />
+            <img src="/lovable-uploads/2a041c16-2d12-4ab4-ae51-4e62283a2cdd.png" alt="VEXA Creative - Your Digital Growth Partner" className="w-[190px] h-[40px] object-fill" />
           </Link>
 
           {/* Desktop Navigation */}
