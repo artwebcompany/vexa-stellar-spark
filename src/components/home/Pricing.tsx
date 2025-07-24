@@ -1,10 +1,20 @@
 
-import React from 'react';
-import { Check } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 import AnimationWrapper from '../AnimationWrapper';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/collapsible';
 
 const Pricing = () => {
+  const [expandedCards, setExpandedCards] = useState<{[key: number]: boolean}>({});
+
+  const toggleCard = (index: number) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
   const plans = [
     {
       name: 'Social Media Management',
@@ -116,12 +126,37 @@ const Pricing = () => {
                 </div>
 
                 <div className="space-y-3 flex-1 mb-6">
-                  {plan.features.map((feature, idx) => (
+                  {plan.features.slice(0, 4).map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-vexa-purple mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700 text-sm">{feature}</span>
                     </div>
                   ))}
+                  
+                  {plan.features.length > 4 && (
+                    <Collapsible open={expandedCards[index]} onOpenChange={() => toggleCard(index)}>
+                      <CollapsibleTrigger className="flex items-center gap-2 text-vexa-purple hover:text-vexa-blue transition-colors text-sm font-medium">
+                        <span>View details</span>
+                        {expandedCards[index] ? (
+                          <ChevronUp className="w-4 h-4" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4" />
+                        )}
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="space-y-3 mt-3">
+                        {plan.features.slice(4).map((feature, idx) => (
+                          <div key={idx + 4} className="flex items-start gap-2">
+                            <Check className="w-4 h-4 text-vexa-purple mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-700 text-sm">{feature}</span>
+                          </div>
+                        ))}
+                        <div className="flex items-start gap-2 pt-2 border-t border-gray-100">
+                          <Check className="w-4 h-4 text-vexa-purple mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-700 text-sm font-medium">Packages are fully customizable</span>
+                        </div>
+                      </CollapsibleContent>
+                    </Collapsible>
+                  )}
                 </div>
 
                 <a 
@@ -178,12 +213,37 @@ const Pricing = () => {
                       </div>
 
                       <div className="space-y-4 flex-1 mb-6">
-                        {plan.features.map((feature, idx) => (
+                        {plan.features.slice(0, 4).map((feature, idx) => (
                           <div key={idx} className="flex items-start gap-3">
                             <Check className="w-5 h-5 text-vexa-purple mt-0.5 flex-shrink-0" />
                             <span className="text-gray-700">{feature}</span>
                           </div>
                         ))}
+                        
+                        {plan.features.length > 4 && (
+                          <Collapsible open={expandedCards[index]} onOpenChange={() => toggleCard(index)}>
+                            <CollapsibleTrigger className="flex items-center gap-2 text-vexa-purple hover:text-vexa-blue transition-colors font-medium">
+                              <span>View details</span>
+                              {expandedCards[index] ? (
+                                <ChevronUp className="w-5 h-5" />
+                              ) : (
+                                <ChevronDown className="w-5 h-5" />
+                              )}
+                            </CollapsibleTrigger>
+                            <CollapsibleContent className="space-y-4 mt-4">
+                              {plan.features.slice(4).map((feature, idx) => (
+                                <div key={idx + 4} className="flex items-start gap-3">
+                                  <Check className="w-5 h-5 text-vexa-purple mt-0.5 flex-shrink-0" />
+                                  <span className="text-gray-700">{feature}</span>
+                                </div>
+                              ))}
+                              <div className="flex items-start gap-3 pt-2 border-t border-gray-100">
+                                <Check className="w-5 h-5 text-vexa-purple mt-0.5 flex-shrink-0" />
+                                <span className="text-gray-700 font-medium">Packages are fully customizable</span>
+                              </div>
+                            </CollapsibleContent>
+                          </Collapsible>
+                        )}
                       </div>
 
                       <a 
