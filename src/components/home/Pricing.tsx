@@ -134,28 +134,29 @@ const Pricing = () => {
                   ))}
                   
                   {plan.features.length > 4 && (
-                    <Collapsible open={expandedCards[index]} onOpenChange={() => toggleCard(index)}>
-                      <CollapsibleTrigger className="flex items-center gap-2 text-vexa-purple hover:text-vexa-blue transition-colors text-sm font-medium">
-                        <span>View details</span>
-                        {expandedCards[index] ? (
-                          <ChevronUp className="w-4 h-4" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4" />
-                        )}
-                      </CollapsibleTrigger>
-                      <CollapsibleContent className="space-y-3 mt-3">
-                        {plan.features.slice(4).map((feature, idx) => (
-                          <div key={idx + 4} className="flex items-start gap-2">
+                    <div className="flex justify-center mt-4">
+                      <Collapsible open={expandedCards[index]} onOpenChange={() => toggleCard(index)}>
+                        <CollapsibleTrigger className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-vexa-purple to-vexa-blue hover:from-vexa-blue hover:to-vexa-cyan transition-all duration-300 text-white shadow-lg hover:shadow-xl transform hover:scale-105">
+                          {expandedCards[index] ? (
+                            <ChevronUp className="w-4 h-4" />
+                          ) : (
+                            <ChevronDown className="w-4 h-4" />
+                          )}
+                        </CollapsibleTrigger>
+                        <CollapsibleContent className="space-y-3 mt-4">
+                          {plan.features.slice(4).map((feature, idx) => (
+                            <div key={idx + 4} className="flex items-start gap-2">
+                              <Check className="w-4 h-4 text-vexa-purple mt-0.5 flex-shrink-0" />
+                              <span className="text-gray-700 text-sm">{feature}</span>
+                            </div>
+                          ))}
+                          <div className="flex items-start gap-2 pt-2 border-t border-gray-100">
                             <Check className="w-4 h-4 text-vexa-purple mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-700 text-sm">{feature}</span>
+                            <span className="text-gray-700 text-sm font-medium">Packages are fully customizable</span>
                           </div>
-                        ))}
-                        <div className="flex items-start gap-2 pt-2 border-t border-gray-100">
-                          <Check className="w-4 h-4 text-vexa-purple mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm font-medium">Packages are fully customizable</span>
-                        </div>
-                      </CollapsibleContent>
-                    </Collapsible>
+                        </CollapsibleContent>
+                      </Collapsible>
+                    </div>
                   )}
                 </div>
 
@@ -175,12 +176,12 @@ const Pricing = () => {
         </div>
 
         {/* Mobile Carousel */}
-        <div className="md:hidden">
-          <Carousel className="w-full max-w-xs mx-auto">
-            <CarouselContent>
+        <div className="md:hidden px-4">
+          <Carousel className="w-full max-w-sm mx-auto">
+            <CarouselContent className="ml-0">
               {plans.map((plan, index) => (
                 <CarouselItem key={index}>
-                  <div className="p-1">
+                  <div className="p-1 pt-6">
                     <div className={`bg-white rounded-3xl p-6 shadow-lg border border-gray-100 transition-all duration-300 h-full flex flex-col relative ${
                       plan.popular 
                         ? 'ring-2 ring-vexa-purple shadow-xl bg-gradient-to-br from-vexa-purple/5 via-vexa-blue/5 to-vexa-cyan/5' 
@@ -221,28 +222,29 @@ const Pricing = () => {
                         ))}
                         
                         {plan.features.length > 4 && (
-                          <Collapsible open={expandedCards[index]} onOpenChange={() => toggleCard(index)}>
-                            <CollapsibleTrigger className="flex items-center gap-2 text-vexa-purple hover:text-vexa-blue transition-colors font-medium">
-                              <span>View details</span>
-                              {expandedCards[index] ? (
-                                <ChevronUp className="w-5 h-5" />
-                              ) : (
-                                <ChevronDown className="w-5 h-5" />
-                              )}
-                            </CollapsibleTrigger>
-                            <CollapsibleContent className="space-y-4 mt-4">
-                              {plan.features.slice(4).map((feature, idx) => (
-                                <div key={idx + 4} className="flex items-start gap-3">
+                          <div className="flex justify-center mt-4">
+                            <Collapsible open={expandedCards[index]} onOpenChange={() => toggleCard(index)}>
+                              <CollapsibleTrigger className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-vexa-purple to-vexa-blue hover:from-vexa-blue hover:to-vexa-cyan transition-all duration-300 text-white shadow-lg hover:shadow-xl transform hover:scale-105">
+                                {expandedCards[index] ? (
+                                  <ChevronUp className="w-5 h-5" />
+                                ) : (
+                                  <ChevronDown className="w-5 h-5" />
+                                )}
+                              </CollapsibleTrigger>
+                              <CollapsibleContent className="space-y-4 mt-4">
+                                {plan.features.slice(4).map((feature, idx) => (
+                                  <div key={idx + 4} className="flex items-start gap-3">
+                                    <Check className="w-5 h-5 text-vexa-purple mt-0.5 flex-shrink-0" />
+                                    <span className="text-gray-700">{feature}</span>
+                                  </div>
+                                ))}
+                                <div className="flex items-start gap-3 pt-2 border-t border-gray-100">
                                   <Check className="w-5 h-5 text-vexa-purple mt-0.5 flex-shrink-0" />
-                                  <span className="text-gray-700">{feature}</span>
+                                  <span className="text-gray-700 font-medium">Packages are fully customizable</span>
                                 </div>
-                              ))}
-                              <div className="flex items-start gap-3 pt-2 border-t border-gray-100">
-                                <Check className="w-5 h-5 text-vexa-purple mt-0.5 flex-shrink-0" />
-                                <span className="text-gray-700 font-medium">Packages are fully customizable</span>
-                              </div>
-                            </CollapsibleContent>
-                          </Collapsible>
+                              </CollapsibleContent>
+                            </Collapsible>
+                          </div>
                         )}
                       </div>
 
